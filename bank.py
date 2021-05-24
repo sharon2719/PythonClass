@@ -1,16 +1,39 @@
-class Bank:
-    customer="Rita Dominic"
+class Account:
 
-    def __init__(self,deposit,balance):
-        self.deposit=deposit
-        self.balance=balance
+    def __init__(self,name,phoneNumber,loan):
+        self.name=name
+        self.phoneNumber=phoneNumber
+        self.balance=0
+        self.loan=loan
 
-    def get_balance(self):
-        return f"Dear {self.customer},you have  balance of kshs.{self.balance}."
+    def showBalance(self):
+        return f"Hello {self.name},your balance is kshs.{self.balance}."
 
-    def borrow(self):
-        return f"Dear {self.customer},you have a deficit of {self.balance-self.deposit}to get a loan."
+    def deposit(self,amount):
+        self.balance+=amount
+        if(amount<0):
+            return f"You cannot deposit less than 0"
+        else:
+            
+            return self.showBalance()
 
-    def save(self):
-        return f"Dear {self.customer} your current savings is Kshs.{self.balance}"
-        
+    def withdraw(self,amount):
+        if(amount>self.balance):
+            return f"Your balance is {self.balance}.You cannot withdraw {amount}"
+        else:
+            self.balance-=amount
+            return self.showBalance()
+    
+    def borrow(self,amount):
+        self.amount=amount
+        if (amount>0):
+            return f"You can borrow{amount}"
+        else:
+            return f"You cannot borrow less than zero"
+    
+    def repay_loan(self,amount):
+        self.amount=amount
+        if(amount>0):
+            return f"Please repay your outstanding loan of{amount}"
+        else:
+            return f"You have cleared your loan!"
